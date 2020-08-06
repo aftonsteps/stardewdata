@@ -9,7 +9,7 @@ public class Main {
         JSONParser parser = new JSONParser();
 
         BigCraftables test = new BigCraftables(parser, "/Users/aftoncoombs/Projects/rstardew/data-raw/unpacked/BigCraftablesInformation.json");
-        System.out.println(test.getRawData());
-        test.printIds();
+        System.out.println(test.content[0][0]);
+        test.writeToFile();
     }
 }
