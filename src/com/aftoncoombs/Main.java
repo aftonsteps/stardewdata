@@ -8,8 +8,11 @@ public class Main {
 	// Setup singletons
         JSONParser parser = new JSONParser();
 
-        BigCraftables test = new BigCraftables(parser, "/Users/aftoncoombs/Projects/rstardew/data-raw/unpacked/BigCraftablesInformation.json");
-        System.out.println(test.content[0][0]);
+        BigCraftables test =
+                new BigCraftables(parser, "/Users/aftoncoombs/Projects/rstardew/data-raw/unpacked/BigCraftablesInformation.json", new int[] {3});
         test.writeToFile();
+
+        Crops cropsTest = new Crops(parser, "/Users/aftoncoombs/Projects/rstardew/data-raw/unpacked/Crops.json");
+        cropsTest.writeToFile();
     }
 }
