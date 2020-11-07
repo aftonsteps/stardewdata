@@ -11,7 +11,7 @@ public class Main {
 			path = System.getProperty("user.dir");
 		}
 
-		path = "/Users/aftoncoombs/Projects/rstardew/data-raw/unpacked";
+		//path = "/Users/aftoncoombs/Projects/rstardew/data-raw/unpacked";
 
 		JSONParser parser = new JSONParser();
 
