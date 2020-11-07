@@ -94,7 +94,8 @@ public abstract class GameData {
 	    
 	    public void writeToFile() {
 	        try {
-	            CSVWriter writer = new CSVWriter(new FileWriter(this.name + ".csv"), ',', '"', '\\', "\n");
+	            //CSVWriter writer = new CSVWriter(new FileWriter(this.name + ".csv"), ',', '"', '\\', "\n");
+	            CSVWriter writer = new CSVWriter(new FileWriter(this.name + ".csv"));
 	            for (int i=0; i<this.content.length; i++) {
 	                writer.writeNext(content[i]);
 	            }
