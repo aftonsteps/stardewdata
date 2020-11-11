@@ -54,8 +54,8 @@ public abstract class GameData {
 
 	            // Store each object's id and content in a row. Set number of rows to num id's + 1 for title
 	            content = new String[obIds.length + 1][];
-	            int content_idx = 1;
-	            int additional_cols = Arrays.stream(lengths).sum();
+	            int contentIdx = 1;
+	            int additionalCols = Arrays.stream(lengths).sum() - lengths.length;
 
 	            // Fill the content row, splitting cells where required by splitIdx[]
 	            for (int i=1; i<obIds.length; i++) {
@@ -65,9 +65,9 @@ public abstract class GameData {
 	                String nextItem = (String) rawContent.get(id);
 	                String[] nextItemData = nextItem.split("\\/");
 	                // Set number of columns to be 1 id col + raw content   length + new cols due to splitting
-	                content[content_idx] = new String[nextItemData.length + additional_cols + 1];
-	                content[content_idx][0] = id;
-	                content_idx++;
+	                content[contentIdx] = new String[nextItemData.length + additionalCols + 1];
+	                content[contentIdx][0] = id;
+	                contentIdx++;
 	                for (int j=0; j<nextItemData.length; j++) {
 	                    // If this element of item data is an idx to split, then split it, else continue
 	                    if (nextSplitIdx < splitIdx.length && j == splitIdx[nextSplitIdx]) {
@@ -94,7 +94,7 @@ public abstract class GameData {
 	    
 	    public void writeToFile() {
 	        try {
-	            //CSVWriter writer = new CSVWriter(new FileWriter(this.name + ".csv"), ',', '"', '\\', "\n");
+	            //CSVWriter writer = new CSVWriter(new FileWriter(this.name + ".csv"), ',', '"', '\\', "\r\n");
 	            CSVWriter writer = new CSVWriter(new FileWriter(this.name + ".csv"));
 	            for (int i=0; i<this.content.length; i++) {
 	                writer.writeNext(content[i]);
