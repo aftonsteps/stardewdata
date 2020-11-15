@@ -1,4 +1,4 @@
-"ObjectId","Name","Description","SkipHairDraw","IgnoreHairstyleOffset"
+"ObjectId","Name","Description","SkipHairDraw","IgnoreHairstyleOffset","Prismatic"
 "45","Logo Cap","A red cap with a logo on the front.","false","true"
 "46","Wearable Dwarf Helm","A slightly larger, human sized version of the helmets worn by dwarves.","hide","true"
 "47","Fashion Hat","A fashionable hat with a feather in the brim.","false","true"

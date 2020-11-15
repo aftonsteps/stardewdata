@@ -35,7 +35,7 @@ public class Main {
 		
 		// Hats
 		Hats hats =
-				new Hats(parser, path + "/hats.json");
+				new Hats(parser, path + "/hats.json", 6, 5);
 		hats.writeToFile();
 		
 		// Objects
