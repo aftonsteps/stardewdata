@@ -60,13 +60,15 @@ public abstract class GameData {
 		                String id = obIds[i].toString();
 		                String nextItem = (String) rawContent.get(id);
 		                String[] nextItemData = nextItem.split("\\/");
-		                content[i] = new String[nextItemData.length + 1];
+		                content[i] = new String[contentLength + 1];
 		                content[i][0] = id;
 		                boolean skipBack = true;
-		                for (int j=0; j<nextItemData.length; j++) {
-			                if (skipBack &&
+		                for (int j=0; j<contentLength; j++) {
+		                	if (j >= nextItemData.length) {
+		                		content[i][j + 1] = " ";
+		                	} else if (skipBack &&
 			                		nextItemData.length<(contentLength) && 
-			                		j==(nullIdx-1)) {
+			                		j==(nullIdx)) {
 			                	content[i][j + 1] = " ";
 			                	j--;
 			                	skipBack = false;
