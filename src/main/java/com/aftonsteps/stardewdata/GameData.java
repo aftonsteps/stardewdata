@@ -62,12 +62,17 @@ public abstract class GameData {
 		                String[] nextItemData = nextItem.split("\\/");
 		                content[i] = new String[nextItemData.length + 1];
 		                content[i][0] = id;
-		                for (int j = 0; j<nextItemData.length; j++) {
-			                if (nextItemData.length<contentLength && j==nullIdx) {
-			                	content[i][j + 1] = "";
+		                boolean skipBack = true;
+		                for (int j=0; j<nextItemData.length; j++) {
+			                if (skipBack &&
+			                		nextItemData.length<(contentLength) && 
+			                		j==(nullIdx-1)) {
+			                	content[i][j + 1] = " ";
 			                	j--;
+			                	skipBack = false;
 			                } else {
 			                	content[i][j + 1] = nextItemData[j];
+			                	skipBack = true;
 			                }
 		                }
 		            }
