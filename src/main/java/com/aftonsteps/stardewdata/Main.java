@@ -11,8 +11,6 @@ public class Main {
 			path = System.getProperty("user.dir");
 		}
 
-		path = "/Users/aftoncoombs/Projects/unpacked";
-
 		JSONParser parser = new JSONParser();
 
 		// Big Craftables
