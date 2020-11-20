@@ -47,6 +47,11 @@ public class Main {
 		Weapons weapons =
 				new Weapons(parser, path + "/weapons.json");
 		weapons.writeToFile();
+		
+		// Crops Object Information
+		CropsObjectInformation cropsObjectInformation =
+				new CropsObjectInformation(parser, path + "/ObjectInformation.json");
+		cropsObjectInformation.writeToFile();
 	}
 
 }

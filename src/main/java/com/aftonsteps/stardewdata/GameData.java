@@ -42,6 +42,40 @@ public abstract class GameData {
 	        }
 	    }
 	    
+	 	// Constructor in case of subsetting to certain category values e.g. Objectinfo
+	    public GameData(JSONParser parser, String filepath, String[] categories) {
+	        this.parser = parser;
+	        try {
+	            // Parse JSON data
+	            Object obj = parser.parse(new FileReader(filepath));
+	            JSONObject json = (JSONObject) obj;
+
+	            // Get content data
+	            JSONObject rawContent =  (JSONObject) json.get("content");
+	            Object[] obIds = rawContent.keySet().toArray();
+
+	            // Store each object's id and content in a row
+	            content = new String[obIds.length + 1][];
+	            int counter = 1;
+	            for (int i=1; i<obIds.length; i++) {
+	                String id = obIds[i].toString();
+	                String nextItem = (String) rawContent.get(id);
+	                String[] nextItemData = nextItem.split("\\/");
+	                if (nextItemData.length >= 4 &&
+	                		Arrays.asList(categories).contains(nextItemData[3])) {
+		                content[counter] = new String[nextItemData.length + 1];
+		                content[counter][0] = id;
+		                for (int j = 0; j<nextItemData.length; j++) {
+		                    content[counter][j + 1] = nextItemData[j];
+		                }
+		                counter++;
+	                }
+	            }
+	        } catch(Exception e) {
+	            e.printStackTrace();
+	        }
+	    }
+	    
 	    // Constructor in case of jagged array
 	    public GameData(JSONParser parser, String filepath, int contentLength, int nullIdx) {
 	    	 this.parser = parser;
