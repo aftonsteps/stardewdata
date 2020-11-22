@@ -11,52 +11,43 @@ public class Main {
 			path = System.getProperty("user.dir");
 		}
 
-		path = "/Users/aftoncoombs/Projects/unpacked";
-
 		JSONParser parser = new JSONParser();
 
 		// Big Craftables
 		BigCraftables craftTest =
-				new BigCraftables(parser, path + "/BigCraftablesInformation.json", new int[] {3}, new int[] {2});
+				new BigCraftables(parser, path);
 		craftTest.writeToFile();
 		
 		// Crops
 		Crops cropsTest =
-				new Crops(parser,
-						path  + "/Crops.json",
-						new int[] {0, 6},
-						new int[] {5, 5});
+				new Crops(parser, path);
 		cropsTest.writeToFile();
+		
+		// Crops Object Information
+		CropsObjectInformation cropsObjectInformation =
+				new CropsObjectInformation(parser, path);
+		cropsObjectInformation.writeToFile();
 
 		// Furniture
 		Furniture furnitureTest =
-				new Furniture(parser, path + "/furniture.json");
+				new Furniture(parser, path);
 		furnitureTest.writeToFile();
 		
 		// Hats
 		Hats hats =
-				new Hats(parser, path + "/hats.json", 5, 4);
+				new Hats(parser, path);
 		hats.writeToFile();
-		
-		// Objects
-		Objects objects =
-				new Objects(parser, path + "/ObjectInformation.json", new int[] {3}, new int[] {2});
-		objects.writeToFile();
-		
-		// Weapons
-		Weapons weapons =
-				new Weapons(parser, path + "/weapons.json");
-		weapons.writeToFile();
-		
-		// Crops Object Information
-		CropsObjectInformation cropsObjectInformation =
-				new CropsObjectInformation(parser, path + "/ObjectInformation.json");
-		cropsObjectInformation.writeToFile();
 		
 		// Seeds Object Information
 		SeedsObjectInformation seedsObjectInformation =
-				new SeedsObjectInformation(parser, path + "/ObjectInformation.json");
+				new SeedsObjectInformation(parser, path);
 		seedsObjectInformation.writeToFile();
+		
+		// Weapons
+		Weapons weapons =
+				new Weapons(parser, path);
+		weapons.writeToFile();
+		
 	}
 
 }
