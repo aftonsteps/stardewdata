@@ -1,4 +1,5 @@
 "ObjectId","Name","Price","Edibility","Category","Type","Display Name","Description","Food Drink Type","Food Drink Buff","Food Drink Buff Duration"
+"0","Weeds","0","-1","Basic","NA","Weeds","A bunch of obnoxious weeds."
 "2","Stone","0","-300","Basic","NA","Stone","A useful material when broken with the Pickaxe."
 "4","Stone","0","-300","Basic","NA","Stone","A useful material when chopped with the axe."
 "800","Blobfish","500","15","Fish","-4","Blobfish","This odd creature floats above the ocean floor, consuming any edible material in its path.","Day^Spring Summer"

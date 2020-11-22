@@ -7,6 +7,6 @@ public class Furniture extends GameData {
         super(parser, filepath);
         this.name = "Furniture";
         this.joinToObjectInfo = false;
-        this.content[0] = new String[]{"ObjectId", "Name", "Type", "Source Rectangle", "Bounding Box", "Rotations", "Price"};
+        this.colnames = new String[]{"ObjectId", "Name", "Type", "Source Rectangle", "Bounding Box", "Rotations", "Price"};
     }
 }

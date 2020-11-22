@@ -7,6 +7,6 @@ public class Objects extends GameData {
         super(parser, filepath, splitIdx, lengths);
         this.name = "Objects";
         this.joinToObjectInfo = false;
-        this.content[0] = new String[]{"ObjectId", "Name", "Price", "Edibility", "Category", "Type", "Display Name", "Description", "Food Drink Type", "Food Drink Buff", "Food Drink Buff Duration"};
+        this.colnames = new String[]{"ObjectId", "Name", "Price", "Edibility", "Category", "Type", "Display Name", "Description", "Food Drink Type", "Food Drink Buff", "Food Drink Buff Duration"};
     }
 }

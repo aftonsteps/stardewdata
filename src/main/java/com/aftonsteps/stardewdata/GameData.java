@@ -12,6 +12,7 @@ public abstract class GameData {
 	 protected boolean joinToObjectInfo;
 	 protected JSONParser parser;
 	 public String[][] content;
+	 public String[] colnames;
 	 
 	 	// Basic constructor
 	    public GameData(JSONParser parser, String filepath) {
@@ -27,7 +28,7 @@ public abstract class GameData {
 
 	            // Store each object's id and content in a row
 	            content = new String[obIds.length + 1][];
-	            for (int i=1; i<obIds.length; i++) {
+	            for (int i=0; i<obIds.length; i++) {
 	                String id = obIds[i].toString();
 	                String nextItem = (String) rawContent.get(id);
 	                String[] nextItemData = nextItem.split("\\/");
@@ -57,7 +58,7 @@ public abstract class GameData {
 	            // Store each object's id and content in a row
 	            content = new String[obIds.length + 1][];
 	            int counter = 1;
-	            for (int i=1; i<obIds.length; i++) {
+	            for (int i=0; i<obIds.length; i++) {
 	                String id = obIds[i].toString();
 	                String nextItem = (String) rawContent.get(id);
 	                String[] nextItemData = nextItem.split("\\/");
@@ -90,7 +91,7 @@ public abstract class GameData {
 
 		            // Store each object's id and content in a row
 		            content = new String[obIds.length + 1][];
-		            for (int i=1; i<obIds.length; i++) {
+		            for (int i=0; i<obIds.length; i++) {
 		                String id = obIds[i].toString();
 		                String nextItem = (String) rawContent.get(id);
 		                String[] nextItemData = nextItem.split("\\/");
@@ -130,18 +131,18 @@ public abstract class GameData {
 	            Object[] obIds = rawContent.keySet().toArray();
 
 	            // Store each object's id and content in a row. Set number of rows to num id's + 1 for title
-	            content = new String[obIds.length + 1][];
-	            int contentIdx = 1;
+	            this.content = new String[obIds.length + 1][];
+	            int contentIdx = 0;
 	            int additionalCols = Arrays.stream(lengths).sum() - lengths.length;
 
 	            // Fill the content row, splitting cells where required by splitIdx[]
-	            for (int i=1; i<obIds.length; i++) {
+	            for (int i=0; i<obIds.length; i++) {
 	                int nextSplitIdx = 0;
 	                int cumulativeOffset = 1;
 	                String id = obIds[i].toString();
 	                String nextItem = (String) rawContent.get(id);
 	                String[] nextItemData = nextItem.split("\\/");
-	                // Set number of columns to be 1 id col + raw content   length + new cols due to splitting
+	                // Set number of columns to be 1 id col + raw content length + new cols due to splitting
 	                content[contentIdx] = new String[nextItemData.length + additionalCols + 1];
 	                content[contentIdx][0] = id;
 	                contentIdx++;
@@ -161,7 +162,6 @@ public abstract class GameData {
 	                    } else {
 	                        content[i][j + cumulativeOffset] = nextItemData[j];
 	                    }
-	                    if (i == 0) { System.out.println(content[i][j + cumulativeOffset]); }
 	                }
 	            }
 	        } catch(Exception e) {
@@ -173,6 +173,7 @@ public abstract class GameData {
 	        try {
 	            //CSVWriter writer = new CSVWriter(new FileWriter(this.name + ".csv"), ',', '"', '\\', "\r\n");
 	            CSVWriter writer = new CSVWriter(new FileWriter(this.name + ".csv"));
+	            writer.writeNext(colnames);
 	            for (int i=0; i<this.content.length; i++) {
 	                writer.writeNext(content[i]);
 	            }

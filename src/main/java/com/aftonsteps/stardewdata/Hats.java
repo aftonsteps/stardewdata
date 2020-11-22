@@ -7,6 +7,6 @@ public class Hats extends GameData {
         super(parser, filepath, contentLength, nullIdx);
         this.name = "Hats";
         this.joinToObjectInfo = false;
-        this.content[0] = new String[]{"ObjectId", "Name", "Description", "SkipHairDraw", "IgnoreHairstyleOffset", "Prismatic"};
+        this.colnames = new String[]{"ObjectId", "Name", "Description", "SkipHairDraw", "IgnoreHairstyleOffset", "Prismatic"};
     }
 }

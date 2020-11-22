@@ -11,6 +11,8 @@ public class Main {
 			path = System.getProperty("user.dir");
 		}
 
+		path = "/Users/aftoncoombs/Projects/unpacked";
+
 		JSONParser parser = new JSONParser();
 
 		// Big Craftables
@@ -50,6 +52,11 @@ public class Main {
 		CropsObjectInformation cropsObjectInformation =
 				new CropsObjectInformation(parser, path + "/ObjectInformation.json");
 		cropsObjectInformation.writeToFile();
+		
+		// Seeds Object Information
+		SeedsObjectInformation seedsObjectInformation =
+				new SeedsObjectInformation(parser, path + "/ObjectInformation.json");
+		seedsObjectInformation.writeToFile();
 	}
 
 }
