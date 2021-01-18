@@ -13,7 +13,6 @@ public abstract class GameData {
 	 protected JSONParser parser;
 	 public String[][] content;
 	 public String[] colnames;
-	 
 	 	// Basic constructor
 	    public GameData(JSONParser parser, String filepath) {
 	        this.parser = parser;

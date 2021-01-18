@@ -1,5 +1,4 @@
 package com.aftonsteps.stardewdata;
-
 import org.json.simple.parser.JSONParser;
 
 public class Crops extends GameData {
