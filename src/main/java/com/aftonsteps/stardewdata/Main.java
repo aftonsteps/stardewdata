@@ -13,6 +13,10 @@ public class Main {
 		}
 
 		JSONParser parser = new JSONParser();
+		
+		// Animals
+		Animals animals = new Animals(parser, path);
+		animals.writeToFile();
 
 		// Big Craftables
 		BigCraftables craftTest =
