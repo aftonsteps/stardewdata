@@ -4,7 +4,7 @@ import org.json.simple.parser.JSONParser;
 
 public class Main {
 	public static void main(String[] args) {
-		// TODO fix compile warnings when exporting the jar
+
 		String path;
 		if (args.length != 0) {
 			path = args[0];
@@ -32,6 +32,10 @@ public class Main {
 		CropsObjectInformation cropsObjectInformation =
 				new CropsObjectInformation(parser, path);
 		cropsObjectInformation.writeToFile();
+		
+		// Events
+		Events events = new Events(parser, path);
+		events.writeToFile();
 
 		// Furniture
 		Furniture furnitureTest =
@@ -42,6 +46,10 @@ public class Main {
 		Hats hats =
 				new Hats(parser, path);
 		hats.writeToFile();
+		
+		// NPC Dispositions
+		NPCDispositions npcDispositions = new NPCDispositions(parser, path);
+		npcDispositions.writeToFile();
 		
 		// Seeds Object Information
 		SeedsObjectInformation seedsObjectInformation =

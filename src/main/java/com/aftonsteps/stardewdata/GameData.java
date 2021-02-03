@@ -8,11 +8,13 @@ import com.opencsv.CSVWriter;
 import org.json.simple.JSONObject;
 
 public abstract class GameData {
+	
 	 public String name;
 	 protected boolean joinToObjectInfo;
 	 protected JSONParser parser;
 	 public String[][] content;
 	 public String[] colnames;
+	 
 	 	// Basic constructor
 	    public GameData(JSONParser parser, String filepath) {
 	        this.parser = parser;
@@ -76,7 +78,7 @@ public abstract class GameData {
 	        }
 	    }
 	    
-	    // Constructor in case of jagged array
+	    // Constructor in case of nulls jagged array
 	    public GameData(JSONParser parser, String filepath, int contentLength, int nullIdx) {
 	    	 this.parser = parser;
 		        try {
