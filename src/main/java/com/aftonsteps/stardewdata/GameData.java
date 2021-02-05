@@ -45,7 +45,7 @@ public abstract class GameData {
 	    }
 	    
 	 	// Constructor in case of subsetting to certain category values e.g. Objectinfo
-	    public GameData(JSONParser parser, String filepath, String[] categories) {
+	    public GameData(JSONParser parser, String filepath, String[] categories, int categoryIdx) {
 	        this.parser = parser;
 	        try {
 	            // Parse JSON data
@@ -58,20 +58,27 @@ public abstract class GameData {
 
 	            // Store each object's id and content in a row
 	            content = new String[obIds.length + 1][];
+	            // Use a counter to skip over rows we don't want
 	            int counter = 1;
 	            for (int i=0; i<obIds.length; i++) {
 	                String id = obIds[i].toString();
-	                String nextItem = (String) rawContent.get(id);
-	                String[] nextItemData = nextItem.split("\\/");
-	                if (nextItemData.length >= 4 &&
-	                		Arrays.asList(categories).contains(nextItemData[3])) {
-		                content[counter] = new String[nextItemData.length + 1];
-		                content[counter][0] = id;
-		                for (int j = 0; j<nextItemData.length; j++) {
-		                    content[counter][j + 1] = nextItemData[j];
+                	// If the category array is the ids (idx 0) then filter here
+	                if (categoryIdx != 0 || Arrays.asList(categories).contains(id)) {
+		                String nextItem = (String) rawContent.get(id);
+		                String[] nextItemData = nextItem.split("\\/");
+		                // If category Idx == 0, proceed parsing everything
+		                // If categoryIdx != 0, then check appropriate element for filtering
+		                if (categoryIdx == 0 || nextItemData.length >= (categoryIdx + 1) &&
+		                		Arrays.asList(categories).contains(nextItemData[categoryIdx])) {
+			                content[counter] = new String[nextItemData.length + 1];
+			                content[counter][0] = id;
+			                for (int j = 0; j<nextItemData.length; j++) {
+			                    content[counter][j + 1] = nextItemData[j];
+			                }
+			                counter++;
 		                }
-		                counter++;
 	                }
+	       
 	            }
 	        } catch(Exception e) {
 	            e.printStackTrace();

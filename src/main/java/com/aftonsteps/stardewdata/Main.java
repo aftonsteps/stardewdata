@@ -51,10 +51,20 @@ public class Main {
 		NPCDispositions npcDispositions = new NPCDispositions(parser, path);
 		npcDispositions.writeToFile();
 		
+		// NPC Gift Tastes
+		NPCGiftTastes npcGiftTastes = 
+				new NPCGiftTastes(parser, path);
+		npcGiftTastes.writeToFile();
+		
 		// Seeds Object Information
 		SeedsObjectInformation seedsObjectInformation =
 				new SeedsObjectInformation(parser, path);
 		seedsObjectInformation.writeToFile();
+		
+		// Universal Gift Tastes
+		UniversalGiftTastes universalGiftTastes =
+				new UniversalGiftTastes(parser, path);
+		universalGiftTastes.writeToFile();
 		
 		// Weapons
 		Weapons weapons =
