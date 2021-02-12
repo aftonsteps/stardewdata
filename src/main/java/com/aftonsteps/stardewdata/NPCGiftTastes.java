@@ -2,6 +2,8 @@ package com.aftonsteps.stardewdata;
 
 import org.json.simple.parser.JSONParser;
 
+// TODO: Fix parsing failures
+
 public class NPCGiftTastes extends GameData {
 
 	public NPCGiftTastes(JSONParser parser, String filepath) {

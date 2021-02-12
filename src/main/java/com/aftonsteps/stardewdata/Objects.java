@@ -2,6 +2,8 @@ package com.aftonsteps.stardewdata;
 
 import org.json.simple.parser.JSONParser;
 
+// TODO: delete this class
+
 public class Objects extends GameData {
     public Objects(JSONParser parser, String filepath, int[] splitIdx, int[] lengths) {
         super(parser, filepath, splitIdx, lengths);

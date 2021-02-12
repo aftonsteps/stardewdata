@@ -34,8 +34,8 @@ public class Main {
 		cropsObjectInformation.writeToFile();
 		
 		// Events
-		Events events = new Events(parser, path);
-		events.writeToFile();
+//		Events events = new Events(parser, path);
+//		events.writeToFile();
 
 		// Furniture
 		Furniture furnitureTest =

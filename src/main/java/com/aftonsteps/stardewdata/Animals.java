@@ -2,6 +2,8 @@ package com.aftonsteps.stardewdata;
 
 import org.json.simple.parser.JSONParser;
 
+// TODO fix trailing comma on some rows in Animals data
+
 public class Animals extends GameData {
 
 	public Animals(JSONParser parser, String filepath) {
