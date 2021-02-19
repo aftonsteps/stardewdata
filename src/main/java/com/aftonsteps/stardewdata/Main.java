@@ -19,9 +19,9 @@ public class Main {
 		animals.writeToFile();
 
 		// Big Craftables
-		BigCraftables craftTest =
+		BigCraftables bigCraftables =
 				new BigCraftables(parser, path);
-		craftTest.writeToFile();
+		bigCraftables.writeToFile();
 		
 		// Crops
 		Crops cropsTest =
@@ -37,6 +37,7 @@ public class Main {
 //		Events events = new Events(parser, path);
 //		events.writeToFile();
 
+		// TODO: Should split the bounding box for furniture
 		// Furniture
 		Furniture furnitureTest =
 				new Furniture(parser, path);

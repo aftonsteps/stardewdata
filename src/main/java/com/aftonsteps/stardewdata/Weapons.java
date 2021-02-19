@@ -4,13 +4,26 @@ import org.json.simple.parser.JSONParser;
 
 public class Weapons extends GameData {
     public Weapons(JSONParser parser, String filepath) {
-        super(parser, filepath + "/weapons.json");
+        super(parser, 
+        		filepath + "/weapons.json",
+        		new String[] {
+        				"ObjectId", 
+        				"Name", 
+        				"Description", 
+        				"Min Damage Output", 
+        				"Max Damage Output", 
+        				"Knockback", 
+        				"Speed", 
+        				"Added Precision", 
+        				"Added Defense", 
+        				"Type", 
+        				"Base Mine Level",
+        				"Min Mine Level", 
+        				"Added Area Of Effect", 
+        				"Critical Chance", 
+        				"Critical Multiplier"});
         this.name = "Weapons";
-        this.joinToObjectInfo = true;
-        this.colnames = 
-        		new String[]{"ObjectId", "Name", "Description", "Min Damage Output", 
-        				"Max Damage Output", "Knockback", "Speed", "Added Precision", 
-        				"Added Defense", "Type", "Base Mine Level", "Min Mine Level", 
-        				"Added Area Of Effect", "Critical Chance", "Critical Multiplier"};
+		super.parseIds();
+		super.parseContent(new int[] {}, new int[] {}, new int[] {});
     }
 }

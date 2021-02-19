@@ -3,257 +3,111 @@ package com.aftonsteps.stardewdata;
 import org.json.simple.parser.JSONParser;
 import java.io.FileReader;
 import java.io.FileWriter;
-import java.util.Arrays;
 import com.opencsv.CSVWriter;
 import org.json.simple.JSONObject;
 
 public abstract class GameData {
 	
 	 public String name;
-	 protected boolean joinToObjectInfo;
-	 protected JSONParser parser;
-	 public String[][] content;
 	 public String[] colnames;
+	 public int nrow;
+	 public int ncol;
+	 protected JSONObject rawContent;
+	 public Object[] ids;
+	 public String[][] content;
 	 
-	 	// Basic constructor
-	    public GameData(JSONParser parser, String filepath) {
-	        this.parser = parser;
-	        try {
-	            // Parse JSON data
-	            Object obj = parser.parse(new FileReader(filepath));
-	            JSONObject json = (JSONObject) obj;
-
-	            // Get content data
-	            JSONObject rawContent =  (JSONObject) json.get("content");
-	            Object[] obIds = rawContent.keySet().toArray();
-
-	            // Store each object's id and content in a row
-	            content = new String[obIds.length + 1][];
-	            for (int i=0; i<obIds.length; i++) {
-	                String id = obIds[i].toString();
-	                String nextItem = (String) rawContent.get(id);
-	                String[] nextItemData = nextItem.split("\\/");
-	                content[i] = new String[nextItemData.length + 1];
-	                content[i][0] = id;
-	                for (int j = 0; j<nextItemData.length; j++) {
-	                    content[i][j + 1] = nextItemData[j];
-	                }
-	            }
-	        } catch(Exception e) {
-	            e.printStackTrace();
-	        }
-	    }
-	    
-	 	// Constructor in case of subsetting to certain category values e.g. Objectinfo
-	    public GameData(JSONParser parser, String filepath, String[] categories, int categoryIdx) {
-	        this.parser = parser;
-	        try {
-	            // Parse JSON data
-	            Object obj = parser.parse(new FileReader(filepath));
-	            JSONObject json = (JSONObject) obj;
-
-	            // Get content data
-	            JSONObject rawContent =  (JSONObject) json.get("content");
-	            Object[] obIds = rawContent.keySet().toArray();
-
-	            // Store each object's id and content in a row
-	            content = new String[obIds.length + 1][];
-	            // Use a counter to skip over rows we don't want
-	            int counter = 1;
-	            for (int i=0; i<obIds.length; i++) {
-	                String id = obIds[i].toString();
-                	// If the category array is the ids (idx 0) then filter here
-	                if (categoryIdx != 0 || Arrays.asList(categories).contains(id)) {
-		                String nextItem = (String) rawContent.get(id);
-		                String[] nextItemData = nextItem.split("\\/");
-		                // If category Idx == 0, proceed parsing everything
-		                // If categoryIdx != 0, then check appropriate element for filtering
-		                if (categoryIdx == 0 || nextItemData.length >= (categoryIdx + 1) &&
-		                		Arrays.asList(categories).contains(nextItemData[categoryIdx])) {
-			                content[counter] = new String[nextItemData.length + 1];
-			                content[counter][0] = id;
-			                for (int j = 0; j<nextItemData.length; j++) {
-			                    content[counter][j + 1] = nextItemData[j];
-			                }
-			                counter++;
-		                }
-	                }
-	       
-	            }
-	        } catch(Exception e) {
-	            e.printStackTrace();
-	        }
-	    }
-	    
-	    // Constructor in case of nulls jagged array
-	    public GameData(JSONParser parser, String filepath, int contentLength, int nullIdx) {
-	    	 this.parser = parser;
-		        try {
-		            // Parse JSON data
-		            Object obj = parser.parse(new FileReader(filepath));
-		            JSONObject json = (JSONObject) obj;
-
-		            // Get content data
-		            JSONObject rawContent =  (JSONObject) json.get("content");
-		            Object[] obIds = rawContent.keySet().toArray();
-
-		            // Store each object's id and content in a row
-		            content = new String[obIds.length + 1][];
-		            for (int i=0; i<obIds.length; i++) {
-		                String id = obIds[i].toString();
-		                String nextItem = (String) rawContent.get(id);
-		                String[] nextItemData = nextItem.split("\\/");
-		                content[i] = new String[contentLength + 1];
-		                content[i][0] = id;
-		                boolean skipBack = true;
-		                for (int j=0; j<contentLength; j++) {
-		                	if (j >= nextItemData.length) {
-		                		content[i][j + 1] = " "; // TODO should this be NA not " " ?
-		                	} else if (skipBack &&
-			                		nextItemData.length<(contentLength) && 
-			                		j==(nullIdx)) {
-			                	content[i][j + 1] = " "; // TODO should this be NA not " " ?
-			                	j--;
-			                	skipBack = false;
-			                } else {
-			                	content[i][j + 1] = nextItemData[j];
-			                	skipBack = true;
-			                }
-		                }
-		            }
-		        } catch(Exception e) {
-		            e.printStackTrace();
-		        }
-	    }
-
-	    // Constructor in case of splittable elements
-	    public GameData(JSONParser parser, String filepath, int[] splitIdx, int[] lengths) {
-	        this.parser = parser;
-	        try {
-	            // Parse JSON data
-	            Object obj = parser.parse(new FileReader(filepath));
-	            JSONObject json = (JSONObject) obj;
-
-	            // Get content data
-	            JSONObject rawContent =  (JSONObject) json.get("content");
-	            Object[] obIds = rawContent.keySet().toArray();
-
-	            // Store each object's id and content in a row. Set number of rows to num id's + 1 for title
-	            this.content = new String[obIds.length + 1][];
-	            int contentIdx = 0;
-	            int additionalCols = Arrays.stream(lengths).sum() - lengths.length;
-
-	            // Fill the content row, splitting cells where required by splitIdx[]
-	            for (int i=0; i<obIds.length; i++) {
-	                int nextSplitIdx = 0;
-	                int cumulativeOffset = 1;
-	                String id = obIds[i].toString();
-	                String nextItem = (String) rawContent.get(id);
-	                String[] nextItemData = nextItem.split("\\/");
-	                // Set number of columns to be 1 id col + raw content length + new cols due to splitting
-	                content[contentIdx] = new String[nextItemData.length + additionalCols + 1];
-	                content[contentIdx][0] = id;
-	                contentIdx++;
-	                for (int j=0; j<nextItemData.length; j++) {
-	                    // If this element of item data is an idx to split, then split it, else continue
-	                    if (nextSplitIdx < splitIdx.length && j == splitIdx[nextSplitIdx]) {
-	                        String[] nextItemDataSplit = nextItemData[j].split(" ");
-	                        for (int k=0; k<lengths[nextSplitIdx]; k++) {
-	                            if (k<nextItemDataSplit.length) {
-	                                content[i][j+k+cumulativeOffset] = nextItemDataSplit[k];
-	                            } else {
-	                                content[i][j+k+cumulativeOffset] = "NA";
-	                            }
-	                        }
-	                        cumulativeOffset += lengths[nextSplitIdx] - 1;
-	                        nextSplitIdx++;
-	                    } else {
-	                        content[i][j + cumulativeOffset] = nextItemData[j];
-	                    }
-	                }
-	            }
-	        } catch(Exception e) {
-	            e.printStackTrace();
-	        }
-	    }
-	    
-	    // Constructor in case of splittable elements AND nulls (jagged array)
-	    public GameData(JSONParser parser, String filepath, int[] splitIdx, int[] lengths, int contentLength, int nullIdx) {
-	        this.parser = parser;
-	        try {
-	            // Parse JSON data
-	            Object obj = parser.parse(new FileReader(filepath));
-	            JSONObject json = (JSONObject) obj;
-
-	            // Get content data
-	            JSONObject rawContent =  (JSONObject) json.get("content");
-	            Object[] obIds = rawContent.keySet().toArray();
-
-	            // Store each object's id and content in a row. Set number of rows to num id's + 1 for title
-	            this.content = new String[obIds.length + 1][];
-	            int contentIdx = 0;
-	            int additionalCols = Arrays.stream(lengths).sum() - lengths.length;
-
-	            // Fill the content row, splitting cells where required by splitIdx[]
-	            for (int i=0; i<obIds.length; i++) {
-	                int nextSplitIdx = 0;
-	                int cumulativeOffset = 1;
-	                String id = obIds[i].toString();
-	                String nextItem = (String) rawContent.get(id);
-	                String[] nextItemData = nextItem.split("\\/");
-	               	// If this is the element to code as null, then do so
-                	boolean imputeNull = false;
-                	int thisRowsAdditionalCols = additionalCols;
-                	if (nextItemData.length < (contentLength - additionalCols)) {
-                		imputeNull = true;
-                	}
-                	
-                	if (!imputeNull) { thisRowsAdditionalCols--; }
-                	
-	                // Set number of columns to be 1 id col + raw content length + new cols due to splitting
-	                content[contentIdx] = new String[nextItemData.length + thisRowsAdditionalCols + 1];
-	                content[contentIdx][0] = id;
-	                contentIdx++;
-	                for (int j=0; j<nextItemData.length; j++) {
-	                    // If this element of item data is an idx to split, then split it, else continue
-	                    if (nextSplitIdx < splitIdx.length && j == splitIdx[nextSplitIdx]) {
-	                        String[] nextItemDataSplit = nextItemData[j].split(" ");
-	                        for (int k=0; k<lengths[nextSplitIdx]; k++) {
-	                            if (k<nextItemDataSplit.length) {
-	                                content[i][j+k+cumulativeOffset] = nextItemDataSplit[k];
-	                            } else {
-	                                content[i][j+k+cumulativeOffset] = "NA";
-	                            }
-	                        }
-	                        cumulativeOffset += lengths[nextSplitIdx] - 1;
-	                        nextSplitIdx++;
-	                    } else {
-	                    	if (imputeNull && (j + cumulativeOffset) == nullIdx) {
-	                    		content[i][j + cumulativeOffset] = " "; // TODO should this be NA?
-	                    		content[i][j + cumulativeOffset + 1] = nextItemData[j];
-	                    	} else {
-	                    		content[i][j + cumulativeOffset] = nextItemData[j];
-	                    	}
-
-	                    }
-	                }
-	            }
-	        } catch(Exception e) {
-	            e.printStackTrace();
-	        }
-	    }
-	    
-	    public void writeToFile() {
-	        try {
-	            //CSVWriter writer = new CSVWriter(new FileWriter(this.name + ".csv"), ',', '"', '\\', "\r\n");
-	            CSVWriter writer = new CSVWriter(new FileWriter(this.name + ".csv"));
-	            writer.writeNext(colnames);
-	            for (int i=0; i<this.content.length; i++) {
-	                writer.writeNext(content[i]);
-	            }
-	            writer.close();
-	        } catch(Exception e){
-	            e.printStackTrace();
-	        }
-	    }
+	 // Basic constructor
+	 public GameData(JSONParser parser, String filepath, String[] colnames) {
+		 this.colnames = colnames;
+		 this.ncol = this.colnames.length;
+		 try {
+			 JSONObject json = (JSONObject) parser.parse(new FileReader(filepath));
+			 this.rawContent = (JSONObject) json.get("content");
+		 } catch(Exception e) {
+			 e.printStackTrace();
+		 }
+	 }
+	 
+	 // Parse ID's
+	 public void parseIds() {
+		 this.ids = this.rawContent.keySet().toArray();
+		 this.nrow = this.ids.length;
+		 this.content = new String[this.nrow][this.ncol];
+	 }
+	 
+	 // Parse ID's with filtering
+	 public void parseIds(String[] filter) {
+		 // TODO add a fail-safe here that also filters the filtering set against the existing id's
+		 this.ids = filter;
+		 this.nrow = this.ids.length;
+		 this.content = new String[this.nrow][this.ncol];
+	 }
+	 
+	 // Parse content
+	 // If no split elements, then pass empty arrays
+	 // If no nulls, then pass empty arrays
+	 public void parseContent(int[] splitIdx, int[] splitLengths, int[] nullIdx) {
+		 // Loop over each row
+		 for (int r=0; r<this.ids.length; r++) {
+			 // Get the String data associated with this id, to form a row
+			 this.content[r] = new String[this.ncol];
+			 String nextItem = (String) this.rawContent.get(ids[r]);
+			 System.out.println(nextItem);
+			 String[] nextItemData = nextItem.split("\\/");
+			 this.content[r][0] = ids[r].toString();
+			 
+			 // Set up to parse the String data for  this row into array
+			 boolean tooShort = nullIdx.length > 0 && (nextItemData.length + 1) < (this.ncol - splitIdx.length);
+			 System.out.println(nextItemData.length + 1);
+			 System.out.println((this.ncol - splitIdx.length));
+			 int nextSplit = 0;
+			 int nextNull = 0;
+			 int c = 1; // Starts at 1 because 0 index is occupied by the ID
+			 
+			 // Loop over each element within each row until all the column spaces are filled
+			 for (int elem=0; elem<nextItemData.length && c<this.ncol; elem++) {
+				 if (tooShort && nextNull < nullIdx.length && elem == nullIdx[nextNull]) {
+					 System.out.println("1");
+					 // If this is a null-impute element, then add an empty string
+					 this.content[r][c] = "";
+					 this.content[r][c+1] = nextItemData[elem];
+					 c+=2;
+				 } else if (nextSplit < splitIdx.length && elem == splitIdx[nextSplit]) {
+					 // If this is an element to split, then split
+					 String[] splitData = nextItemData[elem].split(" ");
+					 System.out.println(nextItemData[elem]);
+					 System.out.println("LENGTH " + splitData.length);
+					 System.out.println("EXPECTED LENGTH: " + splitLengths[nextSplit]);
+					 for (int split = 0; split < splitLengths[nextSplit]; split++) {
+						 System.out.println("INDEX " + split);
+						 if (split < splitData.length && splitData[split] != null) {
+							 System.out.println("DATA " + splitData[split]);
+							 this.content[r][c] = splitData[split];
+						 } else {
+							 this.content[r][c] = "";
+						 }
+						 c++;
+					 }
+					 nextSplit++;
+				 } else {
+					 this.content[r][c] = nextItemData[elem];
+					 c++;
+				 }
+			 }
+		 }
+	 }
+	 
+	 public void writeToFile() {
+		 try {
+			 CSVWriter writer = new CSVWriter(new FileWriter(this.name + ".csv"), ',', '"', '\\', "\r\n");
+			 //CSVWriter writer = new CSVWriter(new FileWriter(this.name + ".csv"));
+			 writer.writeNext(colnames);
+			 for (int i=0; i<this.content.length; i++) {
+				 writer.writeNext(content[i]);
+			 }
+			 writer.close();
+		 } catch(Exception e){
+			 e.printStackTrace();
+		 }
+	 }
 }

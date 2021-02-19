@@ -7,9 +7,8 @@ import org.json.simple.parser.JSONParser;
 public class Animals extends GameData {
 
 	public Animals(JSONParser parser, String filepath) {
-		super(parser, filepath  + "/FarmAnimals.json");
-		this.name = "Animals";
-		this.colnames = 
+		super(parser, 
+				filepath  + "/FarmAnimals.json", 
 				new String[] {
 						"Name",
 						"Days To Produce", 
@@ -34,11 +33,14 @@ public class Animals extends GameData {
 						"Sprite Size Side Height",
 						"Fullness Drain",
 						"Happiness Drain",
+						"Harvest Tool",
 						"Meat Index",
 						"Sell Price",
 						"English Display Type",
-						"English Display Building"
-						};
+						"English Display Building"});
+		this.name = "Animals";
+		super.parseIds();
+		super.parseContent(new int[] {}, new int[] {}, new int[] {});
 	}
 
 }

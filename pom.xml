@@ -11,6 +11,8 @@
   <name>stardewdata</name>
   <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
+  
+  <packaging>jar</packaging>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -30,12 +32,11 @@
     	<artifactId>opencsv</artifactId>
     	<version>5.3</version>
     </dependency>
-    <dependency>
-    	<groupId>com.googlecode.json-simple</groupId>
-    	<artifactId>json-simple</artifactId>
-    	<version>1.1.1</version>
-    	<type>bundle</type>
-    </dependency>
+<dependency>
+   <groupId>com.googlecode.json-simple</groupId>
+   <artifactId>json-simple</artifactId>
+   <version>1.1.1</version>
+</dependency>
   </dependencies>
 
   <build>
