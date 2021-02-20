@@ -14,14 +14,28 @@ public class Main {
 
 		JSONParser parser = new JSONParser();
 		
+		// TODO this one is ^ delimited for whatever reason so need to modify the constuctor to
+		// allow for an additional separator
+		// Achievements
+		Achievements achievements = new Achievements(parser, path);
+		achievements.writeToFile();
+		
 		// Animals
 		Animals animals = new Animals(parser, path);
 		animals.writeToFile();
+		
+		// Animal Blueprints
+		AnimalBlueprints animalBlueprints = new AnimalBlueprints(parser, path);
+		animalBlueprints.writeToFile();
 
 		// Big Craftables
 		BigCraftables bigCraftables =
 				new BigCraftables(parser, path);
 		bigCraftables.writeToFile();
+		
+		// Building Blueprints
+		BuildingBlueprints buildingBlueprints = new BuildingBlueprints(parser, path);
+		buildingBlueprints.writeToFile();
 		
 		// Crops
 		Crops cropsTest =

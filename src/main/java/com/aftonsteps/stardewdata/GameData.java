@@ -52,14 +52,11 @@ public abstract class GameData {
 			 // Get the String data associated with this id, to form a row
 			 this.content[r] = new String[this.ncol];
 			 String nextItem = (String) this.rawContent.get(ids[r]);
-			 System.out.println(nextItem);
 			 String[] nextItemData = nextItem.split("\\/");
 			 this.content[r][0] = ids[r].toString();
 			 
 			 // Set up to parse the String data for  this row into array
 			 boolean tooShort = nullIdx.length > 0 && (nextItemData.length + 1) < (this.ncol - splitIdx.length);
-			 System.out.println(nextItemData.length + 1);
-			 System.out.println((this.ncol - splitIdx.length));
 			 int nextSplit = 0;
 			 int nextNull = 0;
 			 int c = 1; // Starts at 1 because 0 index is occupied by the ID
@@ -67,7 +64,6 @@ public abstract class GameData {
 			 // Loop over each element within each row until all the column spaces are filled
 			 for (int elem=0; elem<nextItemData.length && c<this.ncol; elem++) {
 				 if (tooShort && nextNull < nullIdx.length && elem == nullIdx[nextNull]) {
-					 System.out.println("1");
 					 // If this is a null-impute element, then add an empty string
 					 this.content[r][c] = "";
 					 this.content[r][c+1] = nextItemData[elem];
@@ -75,13 +71,8 @@ public abstract class GameData {
 				 } else if (nextSplit < splitIdx.length && elem == splitIdx[nextSplit]) {
 					 // If this is an element to split, then split
 					 String[] splitData = nextItemData[elem].split(" ");
-					 System.out.println(nextItemData[elem]);
-					 System.out.println("LENGTH " + splitData.length);
-					 System.out.println("EXPECTED LENGTH: " + splitLengths[nextSplit]);
 					 for (int split = 0; split < splitLengths[nextSplit]; split++) {
-						 System.out.println("INDEX " + split);
 						 if (split < splitData.length && splitData[split] != null) {
-							 System.out.println("DATA " + splitData[split]);
 							 this.content[r][c] = splitData[split];
 						 } else {
 							 this.content[r][c] = "";
