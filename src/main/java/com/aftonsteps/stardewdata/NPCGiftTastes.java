@@ -10,14 +10,18 @@ public class NPCGiftTastes extends GameData {
 		super(parser, 
 				filepath  + "/NPCGiftTastes.json", 
 				new String[] {
-						"ObjectId", 
 						"Name", 
-						"Price", 
-						"Edibility", 
-		        		"Type",
-		        		"Category",
-		        		"Display Name", 
-		        		"Description"});
+						"Loved Dialogue",
+						"Loved Items", 
+		        		"Liked Dialogue",
+		        		"Liked Items", 
+		        		"Disliked Dialogue",
+		        		"Disliked Items",
+		        		"Hated Dialogue",
+		        		"Hated Items",
+		        		"Neutral Dialogue",
+		        		"Neutral Items"
+		        		});
 		this.name = "NPC Gift Tastes";
 		super.parseIds(new String[] {
 				"Robin", 

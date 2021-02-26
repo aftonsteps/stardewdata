@@ -13,7 +13,7 @@ public class CropsObjectInformation extends GameData {
 						"Edibility", 
 		        		"Type",
 		        		"Category",
-		        		"Display Name", 
+		        		"English Name", 
 		        		"Description"});
 		this.name = "Crops Object Information";
 		super.parseIds(new String[] {

@@ -47,10 +47,6 @@ public class Main {
 				new CropsObjectInformation(parser, path);
 		cropsObjectInformation.writeToFile();
 		
-		// Events
-//		Events events = new Events(parser, path);
-//		events.writeToFile();
-
 		// TODO: Should split the bounding box for furniture
 		// Furniture
 		Furniture furnitureTest =

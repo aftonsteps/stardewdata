@@ -11,7 +11,7 @@ public class SeedsObjectInformation extends GameData {
 				new String[] {
 						"ObjectId", 
 						"Name", 
-						"Price", 
+						"Sell Price", 
 						"Edibility", 
 						"Type",
 						"Category",

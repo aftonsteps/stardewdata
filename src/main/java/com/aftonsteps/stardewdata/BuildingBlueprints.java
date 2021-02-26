@@ -24,7 +24,7 @@ public class BuildingBlueprints extends GameData {
 						"Source Rectangle For Menu View 2",
 						"Max Occupants",
 						"Action Behavior",
-						"Names Of Building Locations",
+						"Name Of Building Location",
 						"Price",
 						"Magical"
 				});

@@ -1,9 +1,8 @@
-com/aftonsteps/stardewdata/Objects.class
-com/aftonsteps/stardewdata/App.class
-com/aftonsteps/stardewdata/BigCraftables.class
-com/aftonsteps/stardewdata/Hats.class
-com/aftonsteps/stardewdata/Main.class
-com/aftonsteps/stardewdata/Weapons.class
-com/aftonsteps/stardewdata/GameData.class
-com/aftonsteps/stardewdata/Crops.class
-com/aftonsteps/stardewdata/Furniture.class
+com\aftonsteps\stardewdata\Crops.class
+com\aftonsteps\stardewdata\BigCraftables.class
+com\aftonsteps\stardewdata\App.class
+com\aftonsteps\stardewdata\GameData.class
+com\aftonsteps\stardewdata\Weapons.class
+com\aftonsteps\stardewdata\Hats.class
+com\aftonsteps\stardewdata\Furniture.class
+com\aftonsteps\stardewdata\Main.class

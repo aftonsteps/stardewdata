@@ -8,7 +8,7 @@ public class AnimalBlueprints extends GameData {
 				filepath + "/Blueprints.json",
 				new String[] {
 						"Name",
-						"Is Animal Building",
+						"Is Animal",
 						"Price",
 						"Source Rectangle For Menu View 1",
 						"Source Rectangle For Menu View 2",
