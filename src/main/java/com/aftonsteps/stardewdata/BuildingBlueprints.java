@@ -56,6 +56,6 @@ public class BuildingBlueprints extends GameData {
 				"Mine Elevator",
 				"Fish Pond"
 		});
-		super.parseContent(new int[] {}, new int[] {}, new int[] {});
+		super.parseContent(new int[] {}, new int[] {}, new int[] {}, "\\/");
 	}
 }

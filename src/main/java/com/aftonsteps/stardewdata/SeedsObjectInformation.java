@@ -64,6 +64,6 @@ public class SeedsObjectInformation extends GameData {
 				"770",
 				"802"
 		});
-		super.parseContent(new int[] {3}, new int[] {2}, new int[] {});
+		super.parseContent(new int[] {3}, new int[] {2}, new int[] {}, "\\/");
 	}
 }

@@ -19,7 +19,7 @@ public class UniversalGiftTastes extends GameData {
 				"Universal_Dislike",
 				"Universal_Hate"
 		});
-		super.parseContent(new int[] {}, new int[] {}, new int[] {});
+		super.parseContent(new int[] {}, new int[] {}, new int[] {}, "\\/");
 	}
 
 }

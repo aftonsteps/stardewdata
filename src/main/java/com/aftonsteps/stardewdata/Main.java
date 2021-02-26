@@ -14,8 +14,8 @@ public class Main {
 
 		JSONParser parser = new JSONParser();
 		
-		// TODO this one is ^ delimited for whatever reason so need to modify the constuctor to
-		// allow for an additional separator
+		// TODO add x, y coord to 1, 2 box column names
+		
 		// Achievements
 		Achievements achievements = new Achievements(parser, path);
 		achievements.writeToFile();
@@ -37,6 +37,10 @@ public class Main {
 		BuildingBlueprints buildingBlueprints = new BuildingBlueprints(parser, path);
 		buildingBlueprints.writeToFile();
 		
+		// Bundles
+		Bundles bundles = new Bundles(parser, path);
+		bundles.writeToFile();
+		
 		// Crops
 		Crops cropsTest =
 				new Crops(parser, path);
@@ -46,6 +50,12 @@ public class Main {
 		CropsObjectInformation cropsObjectInformation =
 				new CropsObjectInformation(parser, path);
 		cropsObjectInformation.writeToFile();
+		
+		// Fish
+		TrappedFish trappedFish = new TrappedFish(parser, path);
+		trappedFish.writeToFile();
+		CaughtFish caughtFish = new CaughtFish(parser, path);
+		caughtFish.writeToFile();
 		
 		// TODO: Should split the bounding box for furniture
 		// Furniture
@@ -66,6 +76,11 @@ public class Main {
 		NPCGiftTastes npcGiftTastes = 
 				new NPCGiftTastes(parser, path);
 		npcGiftTastes.writeToFile();
+		
+		// Quests
+		// TODO missing reaction dialogue
+		Quests quests = new Quests(parser, path);
+		quests.writeToFile();
 		
 		// Seeds Object Information
 		SeedsObjectInformation seedsObjectInformation =

@@ -40,7 +40,7 @@ public class Animals extends GameData {
 						"English Display Building"});
 		this.name = "Animals";
 		super.parseIds();
-		super.parseContent(new int[] {}, new int[] {}, new int[] {});
+		super.parseContent(new int[] {}, new int[] {}, new int[] {}, "\\/");
 	}
 
 }

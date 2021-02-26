@@ -27,6 +27,6 @@ public class Crops extends GameData {
 						});
         this.name = "Crops";
 		super.parseIds();
-		super.parseContent(new int[] {0, 6}, new int[] {5, 5}, new int[] {});
+		super.parseContent(new int[] {0, 6}, new int[] {5, 5}, new int[] {}, "\\/");
     }
 }

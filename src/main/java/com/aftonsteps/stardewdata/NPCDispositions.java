@@ -22,7 +22,7 @@ public class NPCDispositions extends GameData {
 							});
 			this.name = "Hats";
 			super.parseIds();
-			super.parseContent(new int[] {}, new int[] {}, new int[] {2});
+			super.parseContent(new int[] {}, new int[] {}, new int[] {2}, "\\/");
 			this.name = "NPC Dispositions";
 	}
 }

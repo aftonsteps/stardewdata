@@ -19,6 +19,6 @@ public class Furniture extends GameData {
 						});
 		this.name = "Furniture";
 		super.parseIds();
-		super.parseContent(new int[] {}, new int[] {}, new int[] {});
+		super.parseContent(new int[] {}, new int[] {}, new int[] {}, "\\/");
     }
 }

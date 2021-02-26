@@ -46,13 +46,13 @@ public abstract class GameData {
 	 // Parse content
 	 // If no split elements, then pass empty arrays
 	 // If no nulls, then pass empty arrays
-	 public void parseContent(int[] splitIdx, int[] splitLengths, int[] nullIdx) {
+	 public void parseContent(int[] splitIdx, int[] splitLengths, int[] nullIdx, String delimiter) {
 		 // Loop over each row
 		 for (int r=0; r<this.ids.length; r++) {
 			 // Get the String data associated with this id, to form a row
 			 this.content[r] = new String[this.ncol];
 			 String nextItem = (String) this.rawContent.get(ids[r]);
-			 String[] nextItemData = nextItem.split("\\/");
+			 String[] nextItemData = nextItem.split(delimiter);
 			 this.content[r][0] = ids[r].toString();
 			 
 			 // Set up to parse the String data for  this row into array
@@ -90,8 +90,8 @@ public abstract class GameData {
 	 
 	 public void writeToFile() {
 		 try {
-			 CSVWriter writer = new CSVWriter(new FileWriter(this.name + ".csv"), ',', '"', '\\', "\r\n");
-			 //CSVWriter writer = new CSVWriter(new FileWriter(this.name + ".csv"));
+			 //CSVWriter writer = new CSVWriter(new FileWriter(this.name + ".csv"), ',', '"', '\\', "\r\n");
+			 CSVWriter writer = new CSVWriter(new FileWriter(this.name + ".csv"));
 			 writer.writeNext(colnames);
 			 for (int i=0; i<this.content.length; i++) {
 				 writer.writeNext(content[i]);

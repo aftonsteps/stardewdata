@@ -17,6 +17,6 @@ public class Hats extends GameData {
 						"Prismatic"});
 		this.name = "Hats";
 		super.parseIds();
-		super.parseContent(new int[] {}, new int[] {}, new int[] {4});
+		super.parseContent(new int[] {}, new int[] {}, new int[] {4}, "\\/");
     }
 }

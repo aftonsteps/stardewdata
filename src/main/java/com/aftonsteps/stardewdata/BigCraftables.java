@@ -22,6 +22,6 @@ public class BigCraftables extends GameData {
 						});
 		this.name = "Big Craftables";
 		super.parseIds();
-		super.parseContent(new int[] {3, 10}, new int[] {2, 2}, new int[] {8});
+		super.parseContent(new int[] {3, 10}, new int[] {2, 2}, new int[] {8}, "\\/");
     }
 }

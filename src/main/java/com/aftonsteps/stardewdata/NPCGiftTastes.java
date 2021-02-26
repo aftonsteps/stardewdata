@@ -58,7 +58,7 @@ public class NPCGiftTastes extends GameData {
 				"Willy",
 				"Krobus"
 		});
-		super.parseContent(new int[] {}, new int[] {}, new int[] {});
+		super.parseContent(new int[] {}, new int[] {}, new int[] {}, "\\/");
 	}
 
 }

@@ -24,6 +24,6 @@ public class Weapons extends GameData {
         				"Critical Multiplier"});
         this.name = "Weapons";
 		super.parseIds();
-		super.parseContent(new int[] {}, new int[] {}, new int[] {});
+		super.parseContent(new int[] {}, new int[] {}, new int[] {}, "\\/");
     }
 }

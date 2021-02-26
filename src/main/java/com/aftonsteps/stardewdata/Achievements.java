@@ -16,6 +16,6 @@ public class Achievements extends GameData {
 				});
 		this.name = "Achievements";
 		super.parseIds();
-		super.parseContent(new int[] {}, new int[] {}, new int[] {});
+		super.parseContent(new int[] {}, new int[] {}, new int[] {}, "\\^");
 	}
 }

@@ -27,6 +27,6 @@ public class AnimalBlueprints extends GameData {
 				"Goat",
 				"Pig",
 		});
-		super.parseContent(new int[] {}, new int[] {}, new int[] {});
+		super.parseContent(new int[] {}, new int[] {}, new int[] {}, "\\/");
 	}
 }
