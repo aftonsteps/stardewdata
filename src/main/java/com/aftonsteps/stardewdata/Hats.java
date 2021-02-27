@@ -9,7 +9,7 @@ public class Hats extends GameData {
 		super(parser, 
 				filepath  + "/hats.json", 
 				new String[] {
-						"ObjectId", 
+						"Object Id", 
 						"Name", 
 						"Description", 
 						"Skip Hair Draw", 

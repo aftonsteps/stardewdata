@@ -7,7 +7,7 @@ public class CropsObjectInformation extends GameData {
 		super(parser, 
 				filepath  + "/ObjectInformation.json", 
 				new String[] {
-						"ObjectId", 
+						"Object Id", 
 						"Name", 
 						"Price", 
 						"Edibility", 

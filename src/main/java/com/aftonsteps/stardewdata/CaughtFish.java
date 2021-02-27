@@ -22,7 +22,7 @@ public class CaughtFish extends GameData {
         				"Spawn Multiplier",
         				"Depth Multiplier",
         				"Min Fishing Level"});
-        this.name = "CaughtFish";
+        this.name = "Caught Fish";
 		super.parseIds(new String[] {
 				"128",
 				"129",

@@ -14,8 +14,6 @@ public class Main {
 
 		JSONParser parser = new JSONParser();
 		
-		// TODO add x, y coord to 1, 2 box column names
-		
 		// Achievements
 		Achievements achievements = new Achievements(parser, path);
 		achievements.writeToFile();
@@ -57,7 +55,6 @@ public class Main {
 		CaughtFish caughtFish = new CaughtFish(parser, path);
 		caughtFish.writeToFile();
 		
-		// TODO: Should split the bounding box for furniture
 		// Furniture
 		Furniture furnitureTest =
 				new Furniture(parser, path);

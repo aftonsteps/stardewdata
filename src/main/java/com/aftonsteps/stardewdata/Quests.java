@@ -16,7 +16,8 @@ public class Quests extends GameData {
         				"Next Quest", 
         				"Gold", 
         				"Reward Description", 
-        				"Cancelable"});
+        				"Cancelable",
+        				"Reaction Dialogue"});
         this.name = "Quests";
 		super.parseIds();
 		super.parseContent(new int[] {}, new int[] {}, new int[] {}, "\\/");

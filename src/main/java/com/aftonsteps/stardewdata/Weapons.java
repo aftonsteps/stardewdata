@@ -7,7 +7,7 @@ public class Weapons extends GameData {
         super(parser, 
         		filepath + "/weapons.json",
         		new String[] {
-        				"ObjectId", 
+        				"Object Id", 
         				"Name", 
         				"Description", 
         				"Min Damage Output", 
