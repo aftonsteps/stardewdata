@@ -68,6 +68,14 @@ public class Main {
 				new Hats(parser, path);
 		hats.writeToFile();
 		
+		// Locations
+		Locations locations = new Locations(parser, path);
+		locations.writeToFile();
+		
+		// Monsters
+		Monsters monsters = new Monsters(parser, path);
+		monsters.writeToFile();
+		
 		// NPC Dispositions
 		NPCDispositions npcDispositions = new NPCDispositions(parser, path);
 		npcDispositions.writeToFile();
@@ -81,6 +89,10 @@ public class Main {
 		// TODO missing reaction dialogue
 		Quests quests = new Quests(parser, path);
 		quests.writeToFile();
+		
+		// Recipes
+		Recipes recipes = new Recipes(parser, path);
+		recipes.writeToFile();
 		
 		// Seeds Object Information
 		SeedsObjectInformation seedsObjectInformation =
