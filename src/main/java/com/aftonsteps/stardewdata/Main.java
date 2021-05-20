@@ -82,6 +82,10 @@ public class Main {
 				new NPCGiftTastes(parser, path);
 		npcGiftTastes.writeToFile();
 		
+		// Objects
+		Objects objects = new Objects(parser, path);
+		objects.writeToFile();
+		
 		// Quests
 		// TODO missing reaction dialogue
 		Quests quests = new Quests(parser, path);

@@ -45,7 +45,7 @@ public abstract class GameData {
 	 
 	 // Parse content
 	 // If no split elements, then pass empty arrays
-	 // If no nulls, then pass empty arrays
+	 // If no nulls, then pass empty array
 	 public void parseContent(int[] splitIdx, int[] splitLengths, int[] nullIdx, String delimiter) {
 		 // Loop over each row
 		 for (int r=0; r<this.ids.length; r++) {
