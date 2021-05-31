@@ -2,8 +2,8 @@ package com.aftonsteps.stardewdata;
 
 import org.json.simple.parser.JSONParser;
 
-public class Recipes extends GameData {
-	public Recipes(JSONParser parser, String filepath) {
+public class CookingRecipes extends GameData {
+	public CookingRecipes(JSONParser parser, String filepath) {
         super(parser, 
         		filepath + "/CookingRecipes.json",
         		new String[] {
@@ -12,7 +12,7 @@ public class Recipes extends GameData {
         				"Unused",
         				"Yield Object Id",
         				"Unlock Conditions"});
-        this.name = "Recipes";
+        this.name = "Cooking Recipes";
 		super.parseIds();
 		super.parseContent(new int[] {}, new int[] {}, new int[] {}, "\\/");
 	}

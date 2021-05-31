@@ -92,13 +92,12 @@ public class Main {
 		quests.writeToFile();
 		
 		// Recipes
-		Recipes recipes = new Recipes(parser, path);
-		recipes.writeToFile();
+		CookingRecipes cookingRecipes = new CookingRecipes(parser, path);
+		cookingRecipes.writeToFile();
 		
-		// Seeds Object Information
-		SeedsObjectInformation seedsObjectInformation =
-				new SeedsObjectInformation(parser, path);
-		seedsObjectInformation.writeToFile();
+		// Recipes
+		CraftingRecipes craftingRecipes = new CraftingRecipes(parser, path);
+		craftingRecipes.writeToFile();
 		
 		// Universal Gift Tastes
 		UniversalGiftTastes universalGiftTastes =
