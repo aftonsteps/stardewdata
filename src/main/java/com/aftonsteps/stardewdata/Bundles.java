@@ -10,11 +10,11 @@ public class Bundles extends GameData {
         				"Room Id And Sprite Index", 
         				"Bundle Name", 
         				"Reward Type Of Object", 
-        				"Reward Objects", 
-        				"Number of Reward Objects Given",
+        				"Reward Object ID", 
+        				"Number of Reward Object Given",
         				"Required Objects",
         				"Color Index",
-        				"Number Of Items Required"});
+        				"Number Of Objects Required"});
         this.name = "Bundles";
 		super.parseIds();
 		super.parseContent(new int[] {1}, new int[] {3}, new int[] {}, "\\/");
