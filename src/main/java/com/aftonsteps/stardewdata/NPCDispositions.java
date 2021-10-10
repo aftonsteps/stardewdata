@@ -18,11 +18,11 @@ public class NPCDispositions extends GameData {
 							"Love Interest",
 							"Home Region",
 							"Birthday",
-							"Relationships"
+							"Relationships",
+							"Start Location"
 							});
-			this.name = "Hats";
+			this.name = "NPC Dispositions";
 			super.parseIds();
 			super.parseContent(new int[] {}, new int[] {}, new int[] {2}, "\\/");
-			this.name = "NPC Dispositions";
 	}
 }

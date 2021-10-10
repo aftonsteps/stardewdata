@@ -7,7 +7,7 @@ public class BigCraftables extends GameData {
     	super(parser, 
 				filepath  + "/BigCraftablesInformation.json", 
 				new String[] {
-						"ObjectId", 
+						"Object Id", 
 						"Name", 
 						"Price", 
 						"Edibility", 
@@ -17,8 +17,8 @@ public class BigCraftables extends GameData {
 						"Can be set outdoors", 
 						"Can be set indoors", 
 						"Fragility", 
-						"Is Lamp", 
-						"English Name"
+						"English Name",
+						"Is Lamp"
 						});
 		this.name = "Big Craftables";
 		super.parseIds();
